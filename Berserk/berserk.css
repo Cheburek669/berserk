@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* HEADER */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px 7%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(5, 5, 5, 0.85);
+
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid #222;
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #b30000;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #b30000;
+}
+
+
+/* HERO */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 7%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.95),
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.8)
+        ),
+        url("images/berserk.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.small-title {
+    color: #b30000;
+
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+
+    font-size: clamp(70px, 12vw, 150px);
+
+    line-height: 0.85;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 30px;
+}
+
+.hero-text {
+
+    color: #aaa;
+
+    font-size: 20px;
+
+    max-width: 500px;
+
+    margin-bottom: 35px;
+}
+
+
+/* BUTTON */
+
+.button {
+
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    background: #b30000;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+
+    background: #e00000;
+
+    transform: translateY(-3px);
+}
+
+
+/* SECTIONS */
+
+.section {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 130px 7%;
+}
+
+.section-label {
+
+    color: #b30000;
+
+    letter-spacing: 3px;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+.section h2 {
+
+    font-size: clamp(40px, 6vw, 75px);
+
+    line-height: 1;
+
+    margin-bottom: 35px;
+}
+
+.section h2 span {
+
+    color: #b30000;
+}
+
+.description {
+
+    color: #999;
+
+    max-width: 650px;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* CHARACTERS */
+
+.characters {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+    margin-top: 50px;
+}
+
+.card {
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #b30000;
+}
+
+.card img {
+
+    width: 100%;
+
+    height: 400px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.card-info {
+
+    padding: 25px;
+}
+
+.card-info h3 {
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.card-info p {
+
+    color: #888;
+
+    line-height: 1.6;
+}
+
+
+/* STORY */
+
+.story {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 120px 7%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.95),
+            rgba(0,0,0,0.65)
+        ),
+
+        url("images/berserk.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+.story-content {
+
+    max-width: 750px;
+}
+
+.story h2 {
+
+    font-size: clamp(45px, 7vw, 90px);
+
+    line-height: 1;
+
+    margin-bottom: 30px;
+}
+
+.story h2 span {
+
+    color: #b30000;
+}
+
+.story p {
+
+    color: #aaa;
+
+    max-width: 600px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+
+/* FOOTER */
+
+footer {
+
+    border-top: 1px solid #222;
+
+    padding: 40px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+footer p {
+
+    color: #666;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 100px 5%;
+    }
+
+    .section {
+        padding: 90px 5%;
+    }
+
+    .characters {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: 450px;
+    }
+
+    .story {
+        padding: 100px 5%;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
