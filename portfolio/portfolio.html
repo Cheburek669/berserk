@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Айдар — Web Developer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #222;
+        }
+
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #aaa;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background:
+                radial-gradient(circle at 50% 30%, #24134d 0%, #080808 45%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #333;
+            border-radius: 30px;
+            color: #aaa;
+            margin-bottom: 25px;
+            background: #111;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 9vw, 100px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #8b5cf6;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #aaa;
+            font-size: 19px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #8b5cf6;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .secondary {
+            border: 1px solid #333;
+            background: #111;
+        }
+
+        .secondary:hover {
+            background: #181818;
+        }
+
+        /* GENERAL */
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #888;
+            margin-bottom: 45px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service {
+            background: #111;
+            border: 1px solid #222;
+            padding: 30px;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-6px);
+            border-color: #8b5cf6;
+        }
+
+        .service-icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            color: #888;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            overflow: hidden;
+            border-radius: 18px;
+            background: #111;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            border-color: #8b5cf6;
+        }
+
+        .project-image {
+            height: 260px;
+            background: linear-gradient(135deg, #171717, #2b1a50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .project-info p {
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tech span {
+            background: #1c1c1c;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #bbb;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #999;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 18px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+        }
+
+        /* CTA */
+
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, #160c2d, #0d0d0d);
+            border: 1px solid #2a1b45;
+            border-radius: 25px;
+            padding: 70px 25px;
+        }
+
+        .contact h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: #999;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #222;
+            padding: 30px 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                display: none;
+            }
+
+            .services,
+            .projects,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 58px;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .contact h2 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">
+            A<span>.</span>
+        </div>
+
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#projects">Проекты</a>
+            <a href="#about">Обо мне</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            Web Developer • Aktau
+        </div>
+
+        <h1>
+            Создаю сайты,<br>
+            которые <span>работают.</span>
+        </h1>
+
+        <p>
+            Помогаю небольшим бизнесам выглядеть профессионально
+            в интернете с помощью современных и адаптивных сайтов.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn primary">
+                Смотреть проекты
+            </a>
+
+            <a href="#contact" class="btn secondary">
+                Обсудить проект
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <h2 class="section-title">
+        Что я делаю
+    </h2>
+
+    <p class="section-subtitle">
+        От идеи до готового сайта.
+    </p>
+
+    <div class="services">
+
+        <div class="service">
+
+            <div class="service-icon">🌐</div>
+
+            <h3>
+                Лендинги
+            </h3>
+
+            <p>
+                Современные одностраничные сайты
+                для бизнеса, продуктов и услуг.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">📱</div>
+
+            <h3>
+                Адаптивные сайты
+            </h3>
+
+            <p>
+                Сайт будет удобно выглядеть
+                на телефоне, планшете и компьютере.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🎨</div>
+
+            <h3>
+                Дизайн
+            </h3>
+
+            <p>
+                Продумываю структуру, внешний вид
+                и удобство сайта.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <h2 class="section-title">
+        Мои проекты
+    </h2>
+
+    <p class="section-subtitle">
+        Несколько работ, которые показывают мои навыки.
+    </p>
+
+    <div class="projects">
+
+
+        <div class="project">
+
+            <div class="project-image">
+                BERSERK
+            </div>
+
+            <div class="project-info">
+
+                <h3>
+                    Berserk — Мир тьмы
+                </h3>
+
+                <p>
+                    Темный сайт по мотивам манги
+                    с адаптивным дизайном.
+                </p>
+
+                <div class="tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Responsive</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                LANDING
+            </div>
+
+            <div class="project-info">
+
+                <h3>
+                    Бизнес-лендинг
+                </h3>
+
+                <p>
+                    Современная посадочная страница
+                    для продвижения услуги.
+                </p>
+
+                <div class="tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Figma</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                CAFE
+            </div>
+
+            <div class="project-info">
+
+                <h3>
+                    Сайт кафе
+                </h3>
+
+                <p>
+                    Концепт сайта для кафе:
+                    меню, информация и контакты.
+                </p>
+
+                <div class="tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>UI/UX</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                YOUR PROJECT
+            </div>
+
+            <div class="project-info">
+
+                <h3>
+                    Здесь может быть ваш бизнес
+                </h3>
+
+                <p>
+                    Хотите современный сайт?
+                    Давайте создадим его вместе.
+                </p>
+
+                <div class="tech">
+                    <span>Web</span>
+                    <span>Design</span>
+                    <span>Development</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="about">
+
+        <div class="about-text">
+
+            <h2 class="section-title">
+                Немного обо мне
+            </h2>
+
+            <p>
+                Меня зовут Айдар. Я занимаюсь веб-разработкой
+                и созданием дизайнов сайтов.
+            </p>
+
+            <p>
+                Мне нравится превращать идеи в реальные
+                веб-сайты, которыми удобно пользоваться.
+            </p>
+
+            <p>
+                Сейчас я развиваю свои навыки и создаю
+                проекты для своего портфолио.
+            </p>
+
+        </div>
+
+
+        <div class="skills">
+
+            <div class="skill">
+                💻 HTML
+            </div>
+
+            <div class="skill">
+                🎨 CSS
+            </div>
+
+            <div class="skill">
+                ⚡ JavaScript
+            </div>
+
+            <div class="skill">
+                🖌️ Figma
+            </div>
+
+            <div class="skill">
+                🤖 Figma AI
+            </div>
+
+            <div class="skill">
+                📱 Responsive Design
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="contact">
+
+        <h2>
+            Есть идея?
+        </h2>
+
+        <p>
+            Расскажите о своём бизнесе — обсудим,
+            какой сайт можно для него создать.
+        </p>
+
+        <div class="buttons">
+
+            <!-- ЗАМЕНИ ССЫЛКУ НА СВОЙ WHATSAPP -->
+
+            <a
+                href="https://wa.me/qr/73732SCG76AMC1"
+                class="btn primary"
+                target="_blank"
+            >
+                Написать в WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 Aidar — Web Developer
+
+</footer>
+
+</body>
+</html>
